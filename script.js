@@ -93,19 +93,39 @@ const fetchData = async (url) => {
 
 const deleteData = async (url) => {
     try {
-      const req = await fetch(url);
+      const req = await fetch(url,{
+        method:"DELETE"
+      });
   
       console.log(req);
+
+      if(req.status === 200 || req.status === 204){
+        responseOutput.textContent = `
+                
+                    ✅ Объект удален!
+                
+`;
+
+                return  
+      }
+
       if (!req.ok) {
-        responseOutput.textContent = "Произошла ошибка";
-        return;
+        const errorText = await req.text();
+            responseOutput.innerHTML = `
+                <div style="color: #ef4444;">
+                    ❌ Ошибка: ${req.status}
+                </div>
+                <div style="color: #9ca3af; font-size: 12px;">
+                    ${errorText}
+                </div>`;
+            return;
       }
       const data = await req.json();
   
-      responseOutput.textContent = `${JSON.stringify(data, null, 2)}`;
+    //   responseOutput.textContent = `${JSON.stringify(data, null, 2)}`;
     } catch (err) {
       console.log(err.message);
-      responseOutput.textContent = "Введите коректные данные";
+      responseOutput.innerHTML = `<span style="color: #f59e0b">⚠️ ${err.name}: ${err.message}</span>`;
     }
   };
   

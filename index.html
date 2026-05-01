@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Client</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>FrontenByHeart API - TESTER</h1>
+        </header>
+
+        <main class="main-content">
+            <div class="request-form default">
+                <div class="method-selector">
+                    <select id="http-method" class="method-select">
+                        <option value="GET">GET</option>
+                        <option value="POST" class="post">POST</option>
+                        <option value="PATCH" class="patch">PATCH</option>
+                        <option value="DELETE" class="delete">DELETE</option>
+                    </select>
+                </div>
+
+                <input type="url" id="api-url" class="url-input" placeholder="Введите URL API..." required>
+
+                <div class="write-block">
+                    
+                    <textarea id="request-body" class="body-textarea" placeholder="Тело запроса (для POST/PATCH)"></textarea>
+                <textarea id="request-body" class="body-textarea" placeholder="Введите headers"></textarea>
+                    
+                </div>
+
+                <button id="send-request" class="send-btn">Отправить запрос</button>
+            </div>
+
+            <div class="response-section">
+                <h2>Ответ сервера</h2>
+                <pre id="response-output" class="response-output">Здесь будут данные</pre>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
